@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Partie</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ partie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ partie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{% if partie.duree %}{{ partie.duree|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lieu</th>
+                <td>{{ partie.lieu }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ partie.texte }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('partie_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('partie_edit', { 'id': partie.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
