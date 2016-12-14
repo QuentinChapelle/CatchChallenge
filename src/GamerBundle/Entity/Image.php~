@@ -3,6 +3,7 @@
 namespace GamerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Image
@@ -34,6 +35,14 @@ class Image
      * @ORM\Column(name="photo", type="text")
      */
     private $photo;
+
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
 
 
     /**
@@ -90,5 +99,21 @@ class Image
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+    /**
+     * @param DateTime $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }
