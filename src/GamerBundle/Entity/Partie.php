@@ -13,6 +13,21 @@ use Doctrine\ORM\Mapping as ORM;
 class Partie
 {
     /**
+     * @ORM\OneToMany(targetEntity="commentaire", mappedBy="partie")
+     */
+    private $commentaires;
+
+    /**
+     * @ORM\OneToMany(targetEntity="image", mappedBy="partie")
+     */
+    private $images;
+
+    /**
+     * @ORM\OneToMany(targetEntity="user", mappedBy="partie")
+     */
+    private $users;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -181,5 +196,111 @@ class Partie
     public function getDate()
     {
         return $this->date;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add images
+     *
+     * @param \GamerBundle\Entity\image $images
+     * @return Partie
+     */
+    public function addImage(\GamerBundle\Entity\image $images)
+    {
+        $this->images[] = $images;
+
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param \GamerBundle\Entity\image $images
+     */
+    public function removeImage(\GamerBundle\Entity\image $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \GamerBundle\Entity\user $users
+     * @return Partie
+     */
+    public function addUser(\GamerBundle\Entity\user $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \GamerBundle\Entity\user $users
+     */
+    public function removeUser(\GamerBundle\Entity\user $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Add commentaires
+     *
+     * @param \GamerBundle\Entity\commentaire $commentaires
+     * @return Partie
+     */
+    public function addCommentaire(\GamerBundle\Entity\commentaire $commentaires)
+    {
+        $this->commentaires[] = $commentaires;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaires
+     *
+     * @param \GamerBundle\Entity\commentaire $commentaires
+     */
+    public function removeCommentaire(\GamerBundle\Entity\commentaire $commentaires)
+    {
+        $this->commentaires->removeElement($commentaires);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
     }
 }

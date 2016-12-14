@@ -14,6 +14,11 @@ use Symfony\Component\Validator\Constraints\DateTime;
 class Image
 {
     /**
+     * @ORM\ManyToOne(targetEntity="partie", inversedBy="images")
+     */
+    private $partie;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -115,5 +120,28 @@ class Image
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set partie
+     *
+     * @param \GamerBundle\Entity\partie $partie
+     * @return Image
+     */
+    public function setPartie(\GamerBundle\Entity\partie $partie = null)
+    {
+        $this->partie = $partie;
+
+        return $this;
+    }
+
+    /**
+     * Get partie
+     *
+     * @return \GamerBundle\Entity\partie 
+     */
+    public function getPartie()
+    {
+        return $this->partie;
     }
 }

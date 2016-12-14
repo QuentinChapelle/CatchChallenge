@@ -14,6 +14,11 @@ use FOS\UserBundle\Model\User as BaseUser;
 class User extends BaseUser
 {
     /**
+     * @ORM\ManyToOne(targetEntity="partie", inversedBy="users")
+     */
+    private $partie;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -241,5 +246,28 @@ class User extends BaseUser
     public function getBio()
     {
         return $this->bio;
+    }
+
+    /**
+     * Set partie
+     *
+     * @param \GamerBundle\Entity\partie $partie
+     * @return User
+     */
+    public function setPartie(\GamerBundle\Entity\partie $partie = null)
+    {
+        $this->partie = $partie;
+
+        return $this;
+    }
+
+    /**
+     * Get partie
+     *
+     * @return \GamerBundle\Entity\partie 
+     */
+    public function getPartie()
+    {
+        return $this->partie;
     }
 }
