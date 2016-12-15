@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Commentaire
 {
     /**
-     * @ORM\ManyToOne(targetEntity="partie", inversedBy="commentaires")
+     * @ORM\ManyToOne(targetEntity="Partie", inversedBy="commentaires")
      */
     private $partie;
 
@@ -65,5 +65,28 @@ class Commentaire
     public function getContenu()
     {
         return $this->contenu;
+    }
+
+    /**
+     * Set partie
+     *
+     * @param \GamerBundle\Entity\partie $partie
+     * @return Commentaire
+     */
+    public function setPartie(\GamerBundle\Entity\partie $partie = null)
+    {
+        $this->partie = $partie;
+
+        return $this;
+    }
+
+    /**
+     * Get partie
+     *
+     * @return \GamerBundle\Entity\partie 
+     */
+    public function getPartie()
+    {
+        return $this->partie;
     }
 }

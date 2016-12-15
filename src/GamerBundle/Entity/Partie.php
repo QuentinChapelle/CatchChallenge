@@ -13,17 +13,17 @@ use Doctrine\ORM\Mapping as ORM;
 class Partie
 {
     /**
-     * @ORM\OneToMany(targetEntity="commentaire", mappedBy="partie")
+     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="partie")
      */
     private $commentaires;
 
     /**
-     * @ORM\OneToMany(targetEntity="image", mappedBy="partie")
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="partie")
      */
     private $images;
 
     /**
-     * @ORM\OneToMany(targetEntity="user", mappedBy="partie")
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\User", mappedBy="partie")
      */
     private $users;
 

@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Commentaire
 {
     /**
-     * @ORM\ManyToOne(targetEntity="partie", inversedBy="commentaires")
+     * @ORM\ManyToOne(targetEntity="Partie", inversedBy="commentaires")
      */
     private $partie;
 

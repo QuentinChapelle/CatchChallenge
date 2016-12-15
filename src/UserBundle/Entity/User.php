@@ -1,9 +1,10 @@
 <?php
 
-namespace GamerBundle\Entity;
+namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -13,8 +14,9 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
+
     /**
-     * @ORM\ManyToOne(targetEntity="partie", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="GamerBundle\Entity\Partie", inversedBy="users")
      */
     private $partie;
 
@@ -26,6 +28,12 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
 
     /**
      * @var string

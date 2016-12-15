@@ -13,17 +13,17 @@ use Doctrine\ORM\Mapping as ORM;
 class Partie
 {
     /**
-     * @ORM\OneToMany(targetEntity="commentaire", mappedBy="partie")
+     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="partie")
      */
     private $commentaires;
 
     /**
-     * @ORM\OneToMany(targetEntity="image", mappedBy="partie")
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="partie")
      */
     private $images;
 
     /**
-     * @ORM\OneToMany(targetEntity="user", mappedBy="partie")
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\User", mappedBy="partie")
      */
     private $users;
 
@@ -269,5 +269,38 @@ class Partie
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add commentaires
+     *
+     * @param \GamerBundle\Entity\commentaire $commentaires
+     * @return Partie
+     */
+    public function addCommentaire(\GamerBundle\Entity\commentaire $commentaires)
+    {
+        $this->commentaires[] = $commentaires;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaires
+     *
+     * @param \GamerBundle\Entity\commentaire $commentaires
+     */
+    public function removeCommentaire(\GamerBundle\Entity\commentaire $commentaires)
+    {
+        $this->commentaires->removeElement($commentaires);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
     }
 }

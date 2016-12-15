@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Parties list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Duree</th>
+                <th>Lieu</th>
+                <th>Texte</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partie in parties %}
+            <tr>
+                <td><a href="{{ path('partie_show', { 'id': partie.id }) }}">{{ partie.id }}</a></td>
+                <td>{{ partie.nom }}</td>
+                <td>{% if partie.duree %}{{ partie.duree|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ partie.lieu }}</td>
+                <td>{{ partie.texte }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('partie_show', { 'id': partie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('partie_edit', { 'id': partie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('partie_new') }}">Create a new partie</a>
+        </li>
+    </ul>
+{% endblock %}
