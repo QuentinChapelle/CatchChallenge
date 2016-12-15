@@ -9,13 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace GamerBundle\Form\Type;
+namespace FOS\UserBundle\Form\Type;
 
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use FOS\UserBundle\Form\Type\RegistrationFormType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -38,6 +37,7 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('bio')
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
@@ -49,6 +49,7 @@ class RegistrationFormType extends AbstractType
             ))
         ;
     }
+
 
     /**
      * {@inheritdoc}
@@ -62,6 +63,12 @@ class RegistrationFormType extends AbstractType
             'intention' => 'registration',
         ));
     }
+
+    public function getParent()
+    {
+        return 'fos_user_registration';
+    }
+
 
     // BC for SF < 3.0
     /**
@@ -79,4 +86,6 @@ class RegistrationFormType extends AbstractType
     {
         return 'fos_user_registration';
     }
+
+
 }

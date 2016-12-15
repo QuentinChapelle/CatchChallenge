@@ -62,6 +62,11 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: GamerBundle\Entity\User
+    registration:
+        form:
+            type: FOSUserBundle\Form\Type\RegistrationFormType
+            # if you are using Symfony < 2.8 you should use the type name instead
+            # type: app_user_registration
 
 # Swiftmailer Configuration
 swiftmailer:
