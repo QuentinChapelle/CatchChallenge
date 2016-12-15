@@ -5,6 +5,15 @@
     font-size: 25px;
 }
 
+<<<<<<< HEAD
+.img-circle{
+    width: 30vw;
+}
+
+.profile_center{
+    text-align: center;
+}
+=======
 
 
 
@@ -43,3 +52,4 @@
     text-align: center;
     border-radius: 0 0 10px 10px;
 }
+>>>>>>> dev

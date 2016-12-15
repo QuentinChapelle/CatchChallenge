@@ -14,7 +14,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('GamerBundle:Default:index.html.twig');
+        return $this->render('@Gamer/partie/index.html.twig');
     }
 
 }
