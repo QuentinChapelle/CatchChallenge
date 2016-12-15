@@ -26,7 +26,7 @@ class PartieController extends Controller
 
         $parties = $em->getRepository('GamerBundle:Partie')->findAll();
 
-        return $this->render('partie/index.html.twig', array(
+        return $this->render('@Gamer/partie/index.html.twig', array(
             'parties' => $parties,
         ));
     }
@@ -51,7 +51,7 @@ class PartieController extends Controller
             return $this->redirectToRoute('partie_show', array('id' => $partie->getId()));
         }
 
-        return $this->render('partie/new.html.twig', array(
+        return $this->render('@Gamer/partie/new.html.twig', array(
             'partie' => $partie,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class PartieController extends Controller
     {
         $deleteForm = $this->createDeleteForm($partie);
 
-        return $this->render('partie/show.html.twig', array(
+        return $this->render('@Gamer/partie/show.html.twig', array(
             'partie' => $partie,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class PartieController extends Controller
             return $this->redirectToRoute('partie_edit', array('id' => $partie->getId()));
         }
 
-        return $this->render('partie/edit.html.twig', array(
+        return $this->render('@Gamer/partie/edit.html.twig', array(
             'partie' => $partie,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
