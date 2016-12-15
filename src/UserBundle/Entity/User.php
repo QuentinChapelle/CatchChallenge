@@ -36,6 +36,28 @@ class User extends BaseUser
     }
 
     /**
+     * @return boolean
+     */
+    public function isMeneur()
+    {
+        return $this->meneur;
+    }
+
+    /**
+     * @param boolean $meneur
+     */
+    public function setMeneur($meneur)
+    {
+        $this->meneur = $meneur;
+    }
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="meneur", type="boolean")
+     */
+    private $meneur;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)

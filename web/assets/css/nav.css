@@ -1,5 +1,5 @@
 .nav {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     display: flex;
     background-color: #0f0f0f;

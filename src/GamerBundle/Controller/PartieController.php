@@ -12,6 +12,7 @@ use GamerBundle\Entity\Image;
 /**
  * Partie controller.
  *
+ * @Route("/")
  */
 class PartieController extends Controller
 {
@@ -73,6 +74,28 @@ class PartieController extends Controller
             'partie' => $partie,
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * @Route("/dashboard/{id}")
+     */
+    public function dashBoardMeneurAction(Partie $partie)
+    {
+//        path('NOMDUPATH', {'id'=> partie.id})
+//        $partie = new Partie();
+//        $image = new Image();
+
+        $em = $this->getDoctrine()->getManager();
+        // Recherche LE MODELE à supprimer parmi LES MODELES
+        //$partie = $em->getRepository('GamerBundle:Partie')->findOneById($id);
+        // Recherche L'IMAGE DU MODELE visé
+        $images = $em->getRepository('GamerBundle:Image')->findBy(array('partie' => $partie));
+
+        return $this->render('@Gamer/partie/dashBoardMeneur.html.twig', array(
+            'partie' => $partie,
+            'images' => $images,
+        ));
+
     }
 
     /**
@@ -151,4 +174,6 @@ class PartieController extends Controller
             ->getForm()
         ;
     }
+
+
 }

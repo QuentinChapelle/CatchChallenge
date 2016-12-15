@@ -2,10 +2,11 @@
 
 {% block body %}
     <h1 class="partieH1">{{ partie.nom }}</h1>
+    <div class="q-show-center">
     {% for image in partie.images %}
-        <p><img class="img-rounded" src="{{ asset('/uploads/partie_picture/'~ image.photo )}}"/></p>
+        <p><img class="q-img-show" src="{{ asset('/uploads/partie_picture/'~ image.photo )}}"/></p>
     {% endfor %}
-    <table>
+    <table class="q-show-center">
         <tbody>
 
             <tr>
@@ -26,19 +27,8 @@
             </tr>
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('partie_index') }}">Retour à la liste des parties</a>
-        </li>
-        {#<li>
-            <a href="{{ path('partie_edit', { 'id': partie.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>#}
-
-    </ul>
+    </div>
+<div class="q-show-center">
+            <button class="btn btn-warning q-link"><a href="{{ path('partie_index') }}"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp;Retour</a></button>
+</div>
 {% endblock %}
