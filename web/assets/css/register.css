@@ -1,0 +1,27 @@
+.container {
+    margin-top: 50px;
+    text-align: right;
+}
+
+.form {
+    width: 50vw;
+    margin: 10px;
+    border: 1px solid #333333;
+    border-radius: 5px;
+}
+
+a[href="/login"]{
+    display: none;
+}
+
+#retour {
+    display: block;
+    margin-top: 25px;
+    font-size: 20px;
+}
+
+.button {
+    width: 100vw;
+    text-align: center;
+    margin-top: 50px;
+}

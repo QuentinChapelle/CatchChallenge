@@ -1,21 +1,25 @@
-body {
+table {
     text-align: center;
-    display: flex;
-    flex-direction: column;
+    margin-top: 30vh;
 }
 
 input[type=text], input[type=password] {
     border-radius: 15px;
     border: 3px solid blue;
-    width: 30vw;
+    width: 50vw;
     margin-bottom: 30px;
-    margin-left: 35vw;
-    margin-right: 35vw;
+    margin-left: 25vw;
+    margin-right: 25vw;
     text-align: center;
 }
 
-.login {
+.btn {
+    margin-top: 30px;
+}
+
+.register {
     position: absolute;
-    margin-top: 50%;
-    transform: translateY(-50%);
+    bottom: 50px;
+    width: 100%;
+    margin-left: -50%;
 }

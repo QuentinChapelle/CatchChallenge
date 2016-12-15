@@ -25,6 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * Controller managing the registration.
@@ -36,7 +37,11 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class RegistrationController extends Controller
 {
     /**
+     *
+     * @route("/registersfsdf", name="regis")
+     *
      * @param Request $request
+     *
      *
      * @return Response
      */
