@@ -6,5 +6,6 @@
     <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
     {% if targetUrl %}
     <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-    {% endif %}
+        <a href="{{ path('gamer_default_index') }}">Jouer</a>
+ {% endif %}
 {% endblock fos_user_content %}
