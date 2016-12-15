@@ -49,19 +49,19 @@ class User extends BaseUser
      */
     private $prenom;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pseudo", type="string", length=10, unique=true)
-     */
-    private $pseudo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mail", type="string", length=255, unique=true)
-     */
-    private $mail;
+//    /**
+//     * @var string
+//     *
+//     * @ORM\Column(name="pseudo", type="string", length=10, unique=true)
+//     */
+//    private $pseudo;
+//
+//    /**
+//     * @var string
+//     *
+//     * @ORM\Column(name="mail", type="string", length=255, unique=true)
+//     */
+//    private $mail;
 
     /**
      * @var string
