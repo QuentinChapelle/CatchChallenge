@@ -17,7 +17,7 @@ class ImageType extends AbstractType
     {
         $builder->add('titre')
                 ->add('date', DateTimeType::class)
-                ->add('photo', FileType::class)
+                ->add('photo', FileType::class, array('data_class' => null))
         ;
     }
     

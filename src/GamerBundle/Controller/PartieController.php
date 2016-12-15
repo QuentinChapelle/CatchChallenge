@@ -48,9 +48,18 @@ class PartieController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            foreach ($partie->getImages()as $image){
-                $partie->addImage($image);
+
+            foreach ($partie->getImages() as $image){
+
+                $fileName = md5(uniqid()) . '.' . $image->getPhoto()->guessExtension();
+                $image->getPhoto()->move(
+                    $this->getParameter('photo_partie_directory'),
+                    $fileName
+                );
+               $image->setPhoto($fileName);
+               $partie->addImage($image);
             }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($partie);
             $em->flush($partie);

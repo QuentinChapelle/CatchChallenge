@@ -212,9 +212,10 @@ class Partie
      * @param \GamerBundle\Entity\image $images
      * @return Partie
      */
-    public function addImage(\GamerBundle\Entity\image $images)
+    public function addImage(\GamerBundle\Entity\image $image)
     {
-        $this->images[] = $images;
+        $image->setPartie($this);
+        $this->images[] = $image;
 
         return $this;
     }
@@ -304,5 +305,6 @@ class Partie
     {
         return $this->commentaires;
     }
+
 
 }

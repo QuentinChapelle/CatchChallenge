@@ -2,7 +2,9 @@
 
 {% block body %}
     <h1 class="partieH1">{{ partie.nom }}</h1>
-
+    {% for image in partie.images %}
+        <p><img class="img-circle" src="{{ asset('/uploads/partie_picture/'~ image.photo )}}"/></p>
+    {% endfor %}
     <table>
         <tbody>
 
