@@ -14,4 +14,12 @@ class DefaultController extends Controller
     {
         return $this->render('GamerBundle:Default:index.html.twig');
     }
+
+    /**
+     * @Route("/dashboard")
+     */
+    public function dashBoardMeneurAction()
+    {
+        return $this->render('@Gamer/Default/dashBoardMeneur.html.twig');
+    }
 }
