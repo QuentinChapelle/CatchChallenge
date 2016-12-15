@@ -8,9 +8,7 @@ services:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
     app.form.registration:
-        class: UserBundle\Form\Type\RegistrationFormType
-
+        class: UserBundle\Form\RegistrationType
         arguments: [%fos_user.model.user.class%]
-
         tags:
-            - { name: form.type, alias: fos_user_registration }
+            - { name: form.type, alias: app_user_registration }

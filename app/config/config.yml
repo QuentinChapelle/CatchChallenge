@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@GamerBundle/Resources/config/services.yml" }
+    - { resource: "@UserBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -61,10 +62,10 @@ doctrine:
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: GamerBundle\Entity\User
+    user_class: UserBundle\Entity\User
     registration:
         form:
-            type: UserBundle\Form\Type\RegistrationFormType
+            type: UserBundle\Form\RegistrationType
             # if you are using Symfony < 2.8 you should use the type name instead
             # type: app_user_registration
 
