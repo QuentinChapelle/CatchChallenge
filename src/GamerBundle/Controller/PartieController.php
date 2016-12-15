@@ -12,7 +12,7 @@ use GamerBundle\Entity\Image;
 /**
  * Partie controller.
  *
- * @Route("partie")
+ * @Route("/")
  */
 class PartieController extends Controller
 {
