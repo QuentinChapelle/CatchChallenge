@@ -2,42 +2,30 @@
 
 
 {% block body %}
-     {% block content %}
-    <h1 class="partieH1">Listes des parties</h1>
-
-    <table class="table-responsive">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Duree</th>
-                <th>Lieu</th>
-                <th>Texte</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    {% block content %}
+        <h1 class="partieH1">Unicorn Cat</h1>
         {% for partie in parties %}
-            <tr>
-                <td><a href="{{ path('partie_show', { 'id': partie.id }) }}">{{ partie.id }}</a></td>
-                <td>{{ partie.nom }}</td>
-                <td>{% if partie.duree %}{{ partie.duree|date('H:i') }}{% endif %}</td>
-                <td>{{ partie.lieu }}</td>
-                <td>{{ partie.texte }}</td>
-                <td>
+            <a class="q-tuile" href="{{ path('partie_show', { 'id': partie.id }) }}">
+                <table class="table-responsive">
+                    <tbody>
 
+                    <tr class="q-party-name">
+                        <td>{{ partie.lieu }}</td>
+                        <td>{{ partie.nom }}</td>
+                    </tr>
+                    <tr class="q-box-party">
+                        <td>{% for image in partie.images %}
+                                <p><img class="q-party-picture" src="{{ asset('/uploads/partie_picture/'~ image.photo )}}"/></p>
+                            {% endfor %}</td>
+                        <td>
+                            <p>classement here</p>
+                        </td>
+                    </tr>
+                    </div>
 
-                            <a href="{{ path('partie_show', { 'id': partie.id }) }}">En savoir +</a>
-
-                        {#<li>
-                            <a href="{{ path('partie_edit', { 'id': partie.id }) }}">edit</a>
-                        </li>#}
-
-                </td>
-            </tr>
+                    </tbody>
+                </table>
+            </a>
         {% endfor %}
-        </tbody>
-    </table>
-         <a class="btn btn-default partieBtn" href="{{ path('partie_new') }}">Créer une nouvelle partie</a>
     {% endblock %}
 {% endblock %}
