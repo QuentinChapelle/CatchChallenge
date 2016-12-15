@@ -9,18 +9,20 @@
         </div>
         <div class="row">
             <div class="col-xs-6">
-                <img src="{{ asset('assets/images/chatcorn.png') }}" class="center-block">
+                <img src="{{ asset('assets/images/chatcorn.png') }}" class="center-block img-responsive">
             </div>
             <div class="col-xs-6">
-                <img src="{{ asset('assets/images/unicorne.png') }}" class="center-block">
+                {% for image in partie.images %}
+                    <img class="img-rounded" src="{{ asset('/uploads/partie_picture/'~ image.photo )}}"/>
+                {% endfor %}
             </div>
         </div>
         <div class="row">
             <div class="col-xs-6">
-                <input type="button" value="refuser la photo" class="btn-lg btn-success center-block">
+                <input type="button" value="refuser la photo" class="btn-lg btn-danger center-block">
             </div>
             <div class="col-xs-6">
-                <input type="button" value="valider la photo" class=" btn-lg btn-danger center-block">
+                <input type="button" value="valider la photo" class=" btn-lg btn-success center-block">
             </div>
         </div>
     </div>
