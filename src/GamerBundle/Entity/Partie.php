@@ -18,7 +18,7 @@ class Partie
     private $commentaires;
 
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="partie")
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="partie", cascade={"persist"})
      */
     private $images;
 
@@ -203,6 +203,7 @@ class Partie
     public function __construct()
     {
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date = new \DateTime('now');
     }
 
     /**
@@ -211,9 +212,10 @@ class Partie
      * @param \GamerBundle\Entity\image $images
      * @return Partie
      */
-    public function addImage(\GamerBundle\Entity\image $images)
+    public function addImage(\GamerBundle\Entity\image $image)
     {
-        $this->images[] = $images;
+        $image->setPartie($this);
+        $this->images[] = $image;
 
         return $this;
     }
@@ -303,4 +305,6 @@ class Partie
     {
         return $this->commentaires;
     }
+
+
 }

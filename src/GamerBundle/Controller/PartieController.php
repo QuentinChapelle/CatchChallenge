@@ -5,7 +5,9 @@ namespace GamerBundle\Controller;
 use GamerBundle\Entity\Partie;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use GamerBundle\Entity\Image;
 
 /**
  * Partie controller.
@@ -39,16 +41,33 @@ class PartieController extends Controller
      */
     public function newAction(Request $request)
     {
+        $image = new Image;
         $partie = new Partie();
+        $partie ->addImage($image);
         $form = $this->createForm('GamerBundle\Form\PartieType', $partie);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            foreach ($partie->getImages() as $image){
+
+                $fileName = md5(uniqid()) . '.' . $image->getPhoto()->guessExtension();
+                $image->getPhoto()->move(
+                    $this->getParameter('photo_partie_directory'),
+                    $fileName
+                );
+               $image->setPhoto($fileName);
+               $partie->addImage($image);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($partie);
             $em->flush($partie);
 
+
+
             return $this->redirectToRoute('partie_show', array('id' => $partie->getId()));
+
         }
 
         return $this->render('@Gamer/partie/new.html.twig', array(

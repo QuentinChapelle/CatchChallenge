@@ -2,9 +2,15 @@
 
 namespace GamerBundle\Form;
 
+
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+
 
 class PartieType extends AbstractType
 {
@@ -13,7 +19,15 @@ class PartieType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('duree')->add('lieu')->add('texte')        ;
+        $builder->add('nom')
+                ->add('duree', DateTimeType::class)
+                ->add('date', DateTimeType::class)
+                ->add('lieu')
+                ->add('texte')
+                ->add('images', CollectionType::class, array(
+                    'entry_type' => ImageType::class
+                ))    ;
+
     }
     
     /**
