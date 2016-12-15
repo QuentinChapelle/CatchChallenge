@@ -11,8 +11,8 @@ class RegistrationType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('pseudo')
-            ->add('mail')
+//            ->add('pseudo')
+//            ->add('mail')
             ->add('photo')
             ->add('xp')
             ->add('bio')
