@@ -1,8 +1,58 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+<meta name="viewport" content="width=device-width, user-scalable=no">
+
+
+<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
+
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
-    </div>
+<table class="container">
+        <tr>
+                <td>{{form_label(form.email, 'E-mail')}}</td>
+                <td>{{form_widget(form.email, {'attr':{'class':'email form'}}) }}</td>
+                {{form_errors(form.email)}}
+        </tr>
+        <tr>
+                <td>{{form_label(form.username, 'pseudo')}}</td>
+                <td>{{form_widget(form.username, {'attr':{'class':'username form'}}) }}</td>
+                {{form_errors(form.username)}}
+        </tr>
+        <tr>
+                <td>{{form_label(form.plainPassword.first, 'Password')}}</td>
+                <td>{{ form_widget(form.plainPassword.first, {'attr':{'class':'password form'}}) }}</td>
+                {{form_errors(form.plainPassword.first)}}
+        </tr>
+        <tr>
+                <td>{{form_label(form.plainPassword.first, 'Confirm Password')}}</td>
+                <td>{{form_widget(form.plainPassword.second, {'attr':{'class':'confirm form'}}) }}</td>
+                {{form_errors(form.plainPassword.second)}}
+        </tr>
+        <tr>
+                <td>{{form_label(form.nom, 'Nom')}}</td>
+                <td>{{form_widget(form.nom, {'attr':{'class':'nom form'}}) }}</td>
+                {{form_errors(form.nom)}}
+        </tr>
+        <tr>
+                <td>{{form_label(form.prenom, 'Prénom')}}</td>
+                <td>{{form_widget(form.prenom, {'attr':{'class':'prenom form'}}) }}</td>
+                {{form_errors(form.prenom)}}
+        </tr>
+        <tr>
+                <td>{{form_label(form.photo, 'avatar')}}</td>
+                <td>{{form_widget(form.photo, {'attr':{'class':'photo form'}}) }}</td>
+                {{form_errors(form.photo)}}
+        </tr>
+        <tr>
+                <td>{{form_label(form.bio, 'descriptif')}}</td>
+                <td>{{form_widget(form.bio, {'attr':{'class':'form-control', 'placeholder':'message form'}}) }}</td>
+                {{form_errors(form.bio)}}
+        </tr>
+</table>
+<div class="button">
+        <button type="submit" class="btn btn-warning button_contact send">Send</button>
+        <a id="retour" href="{{ path('fos_user_security_login') }}">retour</a>
+</div>
+
+
 {{ form_end(form) }}

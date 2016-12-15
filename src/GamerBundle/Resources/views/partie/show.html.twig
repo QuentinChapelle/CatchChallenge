@@ -1,21 +1,20 @@
 {% extends '@Gamer/base.html.twig' %}
 
 {% block body %}
-    <h1>Partie</h1>
-
+    <h1 class="partieH1">{{ partie.nom }}</h1>
+    {% for image in partie.images %}
+        <p><img class="img-rounded" src="{{ asset('/uploads/partie_picture/'~ image.photo )}}"/></p>
+    {% endfor %}
     <table>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ partie.id }}</td>
-            </tr>
+
             <tr>
                 <th>Nom</th>
                 <td>{{ partie.nom }}</td>
             </tr>
             <tr>
-                <th>Duree</th>
-                <td>{% if partie.duree %}{{ partie.duree|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Durée</th>
+                <td>{% if partie.duree %}{{ partie.duree|date('H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Lieu</th>
@@ -30,15 +29,16 @@
 
     <ul>
         <li>
-            <a href="{{ path('partie_index') }}">Back to the list</a>
+            <a href="{{ path('partie_index') }}">Retour à la liste des parties</a>
         </li>
-        <li>
+        {#<li>
             <a href="{{ path('partie_edit', { 'id': partie.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
+        </li>#}
+
     </ul>
 {% endblock %}

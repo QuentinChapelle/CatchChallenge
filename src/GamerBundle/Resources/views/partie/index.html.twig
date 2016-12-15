@@ -1,9 +1,11 @@
 {% extends 'GamerBundle::base.html.twig' %}
 
-{% block body %}
-    <h1>Parties list</h1>
 
-    <table>
+{% block body %}
+     {% block content %}
+    <h1 class="partieH1">Listes des parties</h1>
+
+    <table class="table-responsive">
         <thead>
             <tr>
                 <th>Id</th>
@@ -19,27 +21,23 @@
             <tr>
                 <td><a href="{{ path('partie_show', { 'id': partie.id }) }}">{{ partie.id }}</a></td>
                 <td>{{ partie.nom }}</td>
-                <td>{% if partie.duree %}{{ partie.duree|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if partie.duree %}{{ partie.duree|date('H:i') }}{% endif %}</td>
                 <td>{{ partie.lieu }}</td>
                 <td>{{ partie.texte }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('partie_show', { 'id': partie.id }) }}">show</a>
-                        </li>
-                        <li>
+
+
+                            <a href="{{ path('partie_show', { 'id': partie.id }) }}">En savoir +</a>
+
+                        {#<li>
                             <a href="{{ path('partie_edit', { 'id': partie.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                        </li>#}
+
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('partie_new') }}">Create a new partie</a>
-        </li>
-    </ul>
+         <a class="btn btn-default partieBtn" href="{{ path('partie_new') }}">Créer une nouvelle partie</a>
+    {% endblock %}
 {% endblock %}
