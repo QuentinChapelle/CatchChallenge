@@ -56,8 +56,8 @@ class PartieController extends Controller
                     $this->getParameter('photo_partie_directory'),
                     $fileName
                 );
-               $image->setPhoto($fileName);
-               $partie->addImage($image);
+                $image->setPhoto($fileName);
+                $partie->addImage($image);
             }
 
             $em = $this->getDoctrine()->getManager();
@@ -96,6 +96,33 @@ class PartieController extends Controller
             'images' => $images,
         ));
 
+    }
+
+    /**
+     * @Route("/dashboardjoueur/")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function dashBoardJoueurAction(Request $request)
+    {
+        $image = new Image();
+        $form = $this->createForm('GamerBundle\Form\ImageType', $image);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($image);
+            $em->flush($image);
+
+            return $this->redirectToRoute('image_show', array(
+                'id' => $image->getId()
+
+            ));
+        }
+
+        return $this->render('@Gamer/partie/dashBoardJoueur.html.twig', array(
+            'form'=> $form->createView(),
+        ));
     }
 
     /**
@@ -172,7 +199,7 @@ class PartieController extends Controller
             ->setAction($this->generateUrl('partie_delete', array('id' => $partie->getId())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
     }
 
 
