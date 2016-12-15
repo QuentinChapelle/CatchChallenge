@@ -7,12 +7,12 @@
 <link rel="stylesheet" href="{{ asset('assets/css/log.css') }}">
 
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
+<form class="login" action="{{ path("fos_user_security_check") }}" method="post">
     {% if csrf_token %}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     {% endif %}
 
-    <label for="Pseudo">{{ 'security.login.username'|trans }}</label>
+    <label for="username">pseudo</label>
     <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 
     <label for="password">{{ 'security.login.password'|trans }}</label>

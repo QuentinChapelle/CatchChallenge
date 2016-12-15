@@ -8,7 +8,14 @@ input[type=text], input[type=password] {
     border-radius: 15px;
     border: 3px solid blue;
     width: 30vw;
+    margin-bottom: 30px;
     margin-left: 35vw;
     margin-right: 35vw;
     text-align: center;
+}
+
+.login {
+    position: absolute;
+    margin-top: 50%;
+    transform: translateY(-50%);
 }
