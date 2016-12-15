@@ -1,5 +1,27 @@
 {% extends '@Gamer/base.html.twig' %}
 
 {% block content %}
-    <h1>Hello World !!!!!!!!!!!!!!!!!!!!!!!</h1>
+    <div class="container well">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-center">Validation</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <img src="{{ asset('assets/images/chatcorn.png') }}" class="center-block">
+            </div>
+            <div class="col-xs-6">
+                <img src="{{ asset('assets/images/unicorne.png') }}" class="center-block">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <input type="button" value="refuser la photo" class="btn-lg btn-success center-block">
+            </div>
+            <div class="col-xs-6">
+                <input type="button" value="valider la photo" class=" btn-lg btn-danger center-block">
+            </div>
+        </div>
+    </div>
 {% endblock %}

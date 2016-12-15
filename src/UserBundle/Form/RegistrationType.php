@@ -18,6 +18,7 @@ class RegistrationType extends AbstractType
             ->add('photo', FileType::class, array('data_class' => null))
             ->add('xp', HiddenType::class, array('required' => false,'data' => 0))
             ->add('bio')
+            ->add('meneur')
         ;
     }
 
