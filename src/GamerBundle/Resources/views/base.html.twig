@@ -1,17 +1,41 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/nav.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0/css/font-awesome.min.css') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
     {% block body %}
-        {% block nav %}{% endblock %}
+        {% block nav %}
+                <div class="nav">
+                    <div class="nav_link">
+                        <a href="#"><i class="fa fa-home" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="nav_link">
+                        <a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="nav_link">
+                        <a href="#"><i class="fa fa-trophy" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="nav_link">
+                        <a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="nav_link">
+                        <a href="#"><i class="fa fa-cog" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="nav_link">
+                        <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+        {% endblock %}
         {% block content %}{% endblock %}
     {% endblock %}
     {% block javascripts %}{% endblock %}

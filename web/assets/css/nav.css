@@ -1,0 +1,15 @@
+.nav {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    background-color: #0f0f0f;
+}
+.nav div {
+    width: calc(100vw / 6);
+    text-align: center;
+}
+.nav div a {
+    padding: 0vh 4vw 0vh 4vw;
+    font-size: 2em;
+    color: wheat;
+}
