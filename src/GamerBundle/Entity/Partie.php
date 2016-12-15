@@ -241,10 +241,10 @@ class Partie
     /**
      * Add users
      *
-     * @param \GamerBundle\Entity\user $users
+     * @param \UserBundle\Entity\user $users
      * @return Partie
      */
-    public function addUser(\GamerBundle\Entity\user $users)
+    public function addUser(\UserBundle\Entity\user $users)
     {
         $this->users[] = $users;
 
@@ -254,9 +254,9 @@ class Partie
     /**
      * Remove users
      *
-     * @param \GamerBundle\Entity\user $users
+     * @param \UserBundle\Entity\user $users
      */
-    public function removeUser(\GamerBundle\Entity\user $users)
+    public function removeUser(\UserBundle\Entity\user $users)
     {
         $this->users->removeElement($users);
     }
