@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 
 
 class PartieType extends AbstractType
@@ -20,8 +21,8 @@ class PartieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nom')
-                ->add('duree', DateTimeType::class)
-                ->add('date', DateTimeType::class)
+                ->add('duree', TimeType::class)
+                ->add('date', DateType::class)
                 ->add('lieu')
                 ->add('texte')
                 ->add('images', CollectionType::class, array(

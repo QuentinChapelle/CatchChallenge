@@ -121,6 +121,13 @@ class Image
     {
         return $this->date;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->date = new \DateTime('now');
+    }
 
     /**
      * Set partie
@@ -144,4 +151,5 @@ class Image
     {
         return $this->partie;
     }
+
 }
