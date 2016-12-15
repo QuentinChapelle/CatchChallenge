@@ -8,10 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
      */
     public function indexAction()
     {
-        return $this->render('GamerBundle:Default:index.html.twig');
+        return $this->render('@Gamer/partie/index.html.twig');
     }
 }
