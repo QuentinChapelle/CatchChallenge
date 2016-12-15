@@ -15,76 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User extends BaseUser
 {
-//
-//    /**
-//     * @AssertImage(
-//     *     maxSize = "1k",
-//     *     mimeTypes = {"image/*"},
-//     *     maxSizeMessage = "The maximum allowed file size is 1MB.",
-//     *     mimeTypesMessage = "Please upload a valid Image.")
-//     */
-//    public $file;
-//
-//    protected function getUploadDir()
-//    {
-//        return 'photo';
-//    }
-//
-//    protected function getUploadRootDir()
-//    {
-//        return __DIR__.'/../../../web/uploads/'.$this->getUploadDir();
-//    }
-//
-//    public function getWebPath()
-//    {
-//        return null === $this->photo ? null : $this->getUploadDir().'/'.$this->photo;
-//    }
-//
-//    public function getAbsolutePath()
-//    {
-//        return null === $this->photo ? null : $this->getUploadRootDir().'/'.$this->photo;
-//    }
-//
-//
-//    /**
-//     * @ORMPrePersist
-//     */
-//    public function preUpload()
-//    {
-//        if (null !== $this->file) {
-//
-//            $this->photo = uniqid().'.'.$this->file->guessExtension();
-//        }
-//    }
-//
-//
-//    /**
-//     * @ORMPostPersist
-//     */
-//    public function upload()
-//    {
-//        if (null === $this->file) {
-//            return;
-//        }
-//// If there is an error when moving the file, an exception will
-//// be automatically thrown by move(). This will properly prevent
-//// the entity from being persisted to the database on error
-//        $this->file->move($this->getUploadRootDir(), $this->photo);
-//
-//        unset($this->file);
-//    }
-//
-//
-//    /**
-//     * @ORMPostRemove
-//     */
-//    public function removeUpload()
-//    {
-//        if ($file = $this->getAbsolutePath()) {
-//            unlink($file);
-//        }
-//    }
-//
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity="GamerBundle\Entity\Partie", inversedBy="users")
@@ -105,6 +37,28 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    /**
+     * @return boolean
+     */
+    public function isMeneur()
+    {
+        return $this->meneur;
+    }
+
+    /**
+     * @param boolean $meneur
+     */
+    public function setMeneur($meneur)
+    {
+        $this->meneur = $meneur;
+    }
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="meneur", type="boolean")
+     */
+    private $meneur;
 
     /**
      * @var string
