@@ -97,7 +97,7 @@ class PartieController extends Controller
     }
 
     /**
-     * @Route("/dashboardjoueur/{id}")
+     * @Route("/dashboardjoueur/{id}",name="gamer_partie_dashboardjoueur")
      * @param Request $request
      * @param Partie $partie
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response

@@ -1,3 +1,8 @@
+body{
+    width:100%;
+    height: 100%;
+}
+
 /***********Partie**************/
 
 .partieH1 {
@@ -36,6 +41,10 @@ input{
 
 .q-img-show{
     width: 40vw !important;
+}
+
+.img-rounded{
+    width: 30vw;
 }
 
 /********************    CSS  QUENTIN   ************************/
