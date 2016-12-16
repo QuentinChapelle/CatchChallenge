@@ -209,8 +209,9 @@ class Partie
     /**
      * Add images
      *
-     * @param \GamerBundle\Entity\image $images
+     * @param image $image
      * @return Partie
+     * @internal param image $images
      */
     public function addImage(\GamerBundle\Entity\image $image)
     {

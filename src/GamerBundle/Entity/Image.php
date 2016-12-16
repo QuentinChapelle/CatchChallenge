@@ -152,4 +152,5 @@ class Image
         return $this->partie;
     }
 
+
 }
