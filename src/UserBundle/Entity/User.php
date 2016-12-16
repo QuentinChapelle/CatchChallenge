@@ -15,6 +15,29 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User extends BaseUser
 {
+
+    /**
+     * @ORM\OneToMany(targetEntity="GamerBundle\Entity\Image", mappedBy="users")
+     */
+    private $images;
+
+    /**
+     * @return mixed
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param mixed $images
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+    }
+
+
     /**
      * @ORM\ManyToOne(targetEntity="GamerBundle\Entity\Partie", inversedBy="users")
      */
