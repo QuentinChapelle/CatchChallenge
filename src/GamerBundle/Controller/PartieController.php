@@ -41,6 +41,8 @@ class PartieController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $image = new Image;
         $partie = new Partie();
         $partie ->addImage($image);
@@ -56,13 +58,19 @@ class PartieController extends Controller
                     $this->getParameter('photo_partie_directory'),
                     $fileName
                 );
+
+                $usr = $this->get('security.context')->getToken()->getUser();
+                $usr->setMeneur(true);
+                $em->persist($usr);
+
+
                 $image->setPhoto($fileName);
                 $partie->addImage($image);
+
             }
 
-            $em = $this->getDoctrine()->getManager();
             $em->persist($partie);
-            $em->flush($partie);
+            $em->flush();
 
 
 
@@ -97,6 +105,26 @@ class PartieController extends Controller
     }
 
     /**
+     *
+     * @Route("/winner", name="winner")
+     *
+     */
+    public function WinnerAction()
+    {
+        return $this->render('@Gamer/partie/winner.html.twig', array());
+    }
+
+    /**
+     *
+     * @Route("/looser", name="looser")
+     *
+     */
+    public function LooserAction()
+    {
+        return $this->render('@Gamer/partie/looser.html.twig', array());
+    }
+
+    /**
      * @Route("/dashboardjoueur/{id}",name="gamer_partie_dashboardjoueur")
      * @param Request $request
      * @param Partie $partie
@@ -115,6 +143,7 @@ class PartieController extends Controller
                 $this->getParameter('photo_partie_directory'),
                 $fileName
             );
+
             $image->setPhoto($fileName);
             $partie->addImage($image);
 
@@ -211,6 +240,5 @@ class PartieController extends Controller
             ->getForm()
             ;
     }
-
 
 }

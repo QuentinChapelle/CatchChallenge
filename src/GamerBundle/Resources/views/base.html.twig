@@ -13,11 +13,13 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
+{% block header %}
 <header>
     <div class="q-head">
         <img class="q-logo" src="{{ asset('assets/images/chatcorn.png') }}" alt="">
     </div>
 </header>
+{% endblock %}
 {% block nav %}
     <div class="nav">
         <div class="nav_link">
