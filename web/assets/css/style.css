@@ -6,6 +6,7 @@
 }
 
 
+/********************    CSS  PROFILE   ************************/
 .img-circle{
     width: 30vw;
 }
@@ -14,21 +15,35 @@
     text-align: center;
 }
 
+.btn-primary {
+    background-color: #1f7b88;
+    border-color: #17505b;
+}
+
+.container_profile{
+    padding-top:10%;
+}
 
 
+input{
+    margin:6px;
+    position: center;
+}
 
 
+/********************  PARTIE   ************************/
 
 
-
-
-
+.q-img-show{
+    width: 40vw !important;
+}
 
 /********************    CSS  QUENTIN   ************************/
 
 
 .q-logo {
-    width: 30vw;
+    width: 20vw;
+    margin-top:5%;
 }
 
 .q-head {text-align: center}
