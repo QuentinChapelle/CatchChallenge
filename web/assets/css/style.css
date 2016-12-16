@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Reem+Kufi');
 
-
 /***********Partie**************/
 
 .partieH1 {
     text-align: center;
     font-size: 25px;
 }
+
+
+/********************    CSS  PROFILE   ************************/
 
 .img-circle{
     width: 30vw;
@@ -18,19 +20,39 @@
 
 
 
+.btn-primary {
+    background-color: #1f7b88;
+    border-color: #17505b;
+}
+
+.container_profile{
+    padding-top:10%;
+}
 
 
+input{
+    margin:6px;
+    position: center;
+}
 
 
+/********************  PARTIE   ************************/
 
 
+.q-img-show{
+    width: 40vw !important;
+}
 
+.img-rounded{
+    width: 30vw;
+}
 
 /********************    CSS  QUENTIN   ************************/
 
 
 .q-logo {
-    width: 30vw;
+    width: 20vw;
+    margin-top:5%;
 }
 
 .q-head {text-align: center}
@@ -54,3 +76,6 @@
     text-align: center;
     border-radius: 0 0 10px 10px;
 }
+
+
+

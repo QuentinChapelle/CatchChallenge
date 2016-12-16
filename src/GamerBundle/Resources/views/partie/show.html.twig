@@ -22,13 +22,15 @@
                 <td>{{ partie.lieu }}</td>
             </tr>
             <tr>
-                <th>Texte</th>
+                <th>Indice</th>
                 <td>{{ partie.texte }}</td>
             </tr>
         </tbody>
     </table>
     </div>
-<div class="q-show-center">
-            <button class="btn btn-warning q-link"><a href="{{ path('partie_index') }}"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp;Retour</a></button>
-</div>
+{#<div class="q-show-center">#}
+            <a class="btn btn-warning q-link" href="{{ path('gamer_partie_dashboardjoueur',{'id':partie.id}) }}"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>Jouer</a>
+{#</div>#}
+            <a class="btn btn-warning q-link" href="{{ path('gamer_partie_dashboardmeneur',{'id':partie.id}) }}"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>Validation Meneur</a>
+
 {% endblock %}
