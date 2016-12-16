@@ -1,7 +1,4 @@
-body{
-    width:100%;
-    height: 100%;
-}
+@import url('https://fonts.googleapis.com/css?family=Reem+Kufi');
 
 /***********Partie**************/
 
@@ -12,6 +9,7 @@ body{
 
 
 /********************    CSS  PROFILE   ************************/
+
 .img-circle{
     width: 30vw;
 }
@@ -19,6 +17,8 @@ body{
 .profile_center{
     text-align: center;
 }
+
+
 
 .btn-primary {
     background-color: #1f7b88;
@@ -76,4 +76,6 @@ input{
     text-align: center;
     border-radius: 0 0 10px 10px;
 }
+
+
 
