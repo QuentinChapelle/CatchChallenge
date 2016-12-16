@@ -24,16 +24,13 @@
             <a href="{{ path ('partie_index') }}"><i class="fa fa-home" aria-hidden="true"></i></a>
         </div>
         <div class="nav_link">
-            <a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
-        </div>
-        <div class="nav_link">
             <a href="#"><i class="fa fa-trophy" aria-hidden="true"></i></a>
         </div>
         <div class="nav_link">
             <a href="{{ path('partie_new') }}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
         </div>
         <div class="nav_link">
-            <a href="#"><i class="fa fa-cog" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
         </div>
         <div class="nav_link">
             <a href="{{ path ('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
@@ -45,6 +42,36 @@
 
     {% endblock %}
 {% endblock %}
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('assets/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script>
+        // ajout de la classe JS à HTML
+        document.querySelector("html").classList.add('js');
+
+        // initialisation des variables
+        var fileInput  = document.querySelector( ".input-file" ),
+                button     = document.querySelector( ".input-file-trigger" ),
+                the_return = document.querySelector(".file-return");
+
+        // action lorsque la "barre d'espace" ou "Entrée" est pressée
+        button.addEventListener( "keydown", function( event ) {
+            if ( event.keyCode == 13 || event.keyCode == 32 ) {
+                fileInput.focus();
+            }
+        });
+
+        // action lorsque le label est cliqué
+        button.addEventListener( "click", function( event ) {
+            fileInput.focus();
+            return false;
+        });
+
+        // affiche un retour visuel dès que input:file change
+        fileInput.addEventListener( "change", function( event ) {
+            the_return.innerHTML = this.value;
+        });
+    </script>
+{% endblock %}
 </body>
 </html>

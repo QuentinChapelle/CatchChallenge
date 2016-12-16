@@ -5,11 +5,11 @@
     background-color: #0f0f0f;
 }
 .nav div {
-    width: calc(100vw / 6);
+    width: calc(100vw / 5);
     text-align: center;
 }
 .nav div a {
-    padding: 0vh 3vw 0vh 3vw;
+    padding: 0vh 4vw 0vh 4vw;
     font-size: 3em;
     color: wheat;
 }
