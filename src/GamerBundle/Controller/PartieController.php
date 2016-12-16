@@ -56,8 +56,8 @@ class PartieController extends Controller
                     $this->getParameter('photo_partie_directory'),
                     $fileName
                 );
-               $image->setPhoto($fileName);
-               $partie->addImage($image);
+                $image->setPhoto($fileName);
+                $partie->addImage($image);
             }
 
             $em = $this->getDoctrine()->getManager();
@@ -86,9 +86,7 @@ class PartieController extends Controller
 //        $image = new Image();
 
         $em = $this->getDoctrine()->getManager();
-        // Recherche LE MODELE à supprimer parmi LES MODELES
-        //$partie = $em->getRepository('GamerBundle:Partie')->findOneById($id);
-        // Recherche L'IMAGE DU MODELE visé
+
         $images = $em->getRepository('GamerBundle:Image')->findBy(array('partie' => $partie));
 
         return $this->render('@Gamer/partie/dashBoardMeneur.html.twig', array(
@@ -96,6 +94,45 @@ class PartieController extends Controller
             'images' => $images,
         ));
 
+    }
+
+    /**
+     * @Route("/dashboardjoueur/{id}")
+     * @param Request $request
+     * @param Partie $partie
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function dashBoardJoueurAction(Request $request, Partie $partie)
+    {
+        $image = new Image();
+        $form = $this->createForm('GamerBundle\Form\ImageType', $image);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $image->getPhoto();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('photo_partie_directory'),
+                $fileName
+            );
+            $image->setPhoto($fileName);
+            $partie->addImage($image);
+
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($image);
+            $em->flush($image);
+
+            return $this->redirectToRoute('partie_index', array(
+                'id' => $image->getId()
+
+            ));
+        }
+
+        return $this->render('@Gamer/partie/dashBoardJoueur.html.twig', array(
+            'partie' => $partie,
+            'form'=> $form->createView(),
+        ));
     }
 
     /**
@@ -172,7 +209,7 @@ class PartieController extends Controller
             ->setAction($this->generateUrl('partie_delete', array('id' => $partie->getId())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
     }
 
 
