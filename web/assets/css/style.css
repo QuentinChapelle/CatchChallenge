@@ -8,6 +8,14 @@
     font-size: 25px;
 }
 
+.img-circle{
+    width: 30vw;
+}
+
+.profile_center{
+    text-align: center;
+}
+
 
 
 
@@ -36,29 +44,13 @@
     margin-left: 20px;
     text-align: center;
     border: 1px solid white;
-    font-family: 'Reem Kufi', sans-serif;
-
 }
 
 .q-box-party {
+    -webkit-box-shadow: 0px 9px 25px -5px rgba(140,137,140,1);
+    -moz-box-shadow: 0px 9px 25px -5px rgba(140,137,140,1);
     box-shadow: 0px 9px 25px -5px rgba(140,137,140,1);
     margin-bottom: 10px;
     text-align: center;
     border-radius: 0 0 10px 10px;
-}
-
-.q-img-show {
-    width: 60vw;
-}
-
-.q-show-center {
-    width: 100vw;
-    text-align: center;
-}
-
-.q-link {
-    font-size: 30px;
-    position: absolute;
-    bottom: 12vh;
-    margin-left: -20%;
 }

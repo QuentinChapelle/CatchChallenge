@@ -15,9 +15,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User extends BaseUser
 {
-
-
-
     /**
      * @ORM\ManyToOne(targetEntity="GamerBundle\Entity\Partie", inversedBy="users")
      */

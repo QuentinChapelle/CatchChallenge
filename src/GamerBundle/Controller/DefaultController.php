@@ -4,6 +4,8 @@ namespace GamerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use GamerBundle\Entity\Partie;
+use GamerBundle\Entity\Image;
 
 class DefaultController extends Controller
 {
@@ -12,14 +14,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('GamerBundle:Default:index.html.twig');
+        return $this->render('@Gamer/partie/index.html.twig');
     }
 
-    /**
-     * @Route("/dashboard")
-     */
-    public function dashBoardMeneurAction()
-    {
-        return $this->render('@Gamer/Default/dashBoardMeneur.html.twig');
-    }
 }
