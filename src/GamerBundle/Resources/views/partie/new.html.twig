@@ -1,5 +1,7 @@
 {% extends '@Gamer/base.html.twig' %}
 
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
 {% block body %}
     {% block content %}
     <h1>Créer votre partie !</h1>
@@ -13,7 +15,7 @@
 
     {{ form_end(form) }}
 
-    <ul>
+    <ul style="margin: 10vh">
         <li>
             <a href="{{ path('partie_index') }}">Retour à la liste des parties</a>
         </li>
