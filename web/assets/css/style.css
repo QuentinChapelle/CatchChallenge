@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Reem+Kufi');
 
+html{
+    height:100%;
+}
 
 /***********Partie**************/
 
@@ -10,6 +13,9 @@
 
 
 /********************    CSS  PROFILE   ************************/
+.login{
+
+}
 
 .img-circle{
     width: 30vw;
