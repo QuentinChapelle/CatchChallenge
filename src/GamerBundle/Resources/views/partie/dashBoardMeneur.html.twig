@@ -10,16 +10,16 @@
         <div class="row">
             <div class="col-xs12">
                 {% for image in partie.images %}
-                    <img class="img-rounded" src="{{ asset('/uploads/partie_picture/'~ image.photo )}}"/>
+                    <img class="img-rounded center-block" src="{{ asset('/uploads/partie_picture/'~ image.photo )}}"/>
                 {% endfor %}
             </div>
         </div>
         <div class="row">
             <div class="col-xs-6">
-                <a class="btn-lg btn-danger q-link" href="{{ path('looser') }}">Refuser la photo</a>
+                <a class="btn-lg btn-danger q-link center-block" href="{{ path('looser') }}">Refuser la photo</a>
             </div>
             <div class="col-xs-6">
-                <a class="btn-lg btn-success q-link" href="{{ path('winner') }}">Valider la photo</a>
+                <a class="btn-lg btn-success q-link center-block" href="{{ path('winner') }}">Valider la photo</a>
             </div>
         </div>
     </div>
