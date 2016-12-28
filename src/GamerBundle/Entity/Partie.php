@@ -1,9 +1,6 @@
 <?php
-
 namespace GamerBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Partie
  *
@@ -16,17 +13,14 @@ class Partie
      * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="partie")
      */
     private $commentaires;
-
     /**
      * @ORM\OneToMany(targetEntity="Image", mappedBy="partie", cascade={"persist"})
      */
     private $images;
-
     /**
      * @ORM\OneToMany(targetEntity="UserBundle\Entity\User", mappedBy="partie")
      */
     private $users;
-
     /**
      * @var int
      *
@@ -35,54 +29,45 @@ class Partie
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
-
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="duree", type="datetime")
      */
     private $duree;
-
     /**
      * @var string
      *
      * @ORM\Column(name="lieu", type="string", length=255)
      */
     private $lieu;
-
     /**
      * @var string
      *
      * @ORM\Column(name="texte", type="text", nullable=true)
      */
     private $texte;
-
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
-
     /**
      * Set nom
      *
@@ -92,20 +77,17 @@ class Partie
     public function setNom($nom)
     {
         $this->nom = $nom;
-
         return $this;
     }
-
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
         return $this->nom;
     }
-
     /**
      * Set duree
      *
@@ -115,20 +97,17 @@ class Partie
     public function setDuree($duree)
     {
         $this->duree = $duree;
-
         return $this;
     }
-
     /**
      * Get duree
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDuree()
     {
         return $this->duree;
     }
-
     /**
      * Set lieu
      *
@@ -138,20 +117,17 @@ class Partie
     public function setLieu($lieu)
     {
         $this->lieu = $lieu;
-
         return $this;
     }
-
     /**
      * Get lieu
      *
-     * @return string 
+     * @return string
      */
     public function getLieu()
     {
         return $this->lieu;
     }
-
     /**
      * Set texte
      *
@@ -161,20 +137,17 @@ class Partie
     public function setTexte($texte)
     {
         $this->texte = $texte;
-
         return $this;
     }
-
     /**
      * Get texte
      *
-     * @return string 
+     * @return string
      */
     public function getTexte()
     {
         return $this->texte;
     }
-
     /**
      * Set date
      *
@@ -184,14 +157,12 @@ class Partie
     public function setDate($date)
     {
         $this->date = $date;
-
         return $this;
     }
-
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -205,7 +176,6 @@ class Partie
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
         $this->date = new \DateTime('now');
     }
-
     /**
      * Add images
      *
@@ -217,10 +187,8 @@ class Partie
     {
         $image->setPartie($this);
         $this->images[] = $image;
-
         return $this;
     }
-
     /**
      * Remove images
      *
@@ -230,17 +198,15 @@ class Partie
     {
         $this->images->removeElement($images);
     }
-
     /**
      * Get images
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getImages()
     {
         return $this->images;
     }
-
     /**
      * Add users
      *
@@ -250,10 +216,8 @@ class Partie
     public function addUser(\UserBundle\Entity\user $users)
     {
         $this->users[] = $users;
-
         return $this;
     }
-
     /**
      * Remove users
      *
@@ -263,17 +227,15 @@ class Partie
     {
         $this->users->removeElement($users);
     }
-
     /**
      * Get users
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsers()
     {
         return $this->users;
     }
-
     /**
      * Add commentaires
      *
@@ -283,10 +245,8 @@ class Partie
     public function addCommentaire(\GamerBundle\Entity\commentaire $commentaires)
     {
         $this->commentaires[] = $commentaires;
-
         return $this;
     }
-
     /**
      * Remove commentaires
      *
@@ -296,16 +256,13 @@ class Partie
     {
         $this->commentaires->removeElement($commentaires);
     }
-
     /**
      * Get commentaires
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCommentaires()
     {
         return $this->commentaires;
     }
-
-
 }

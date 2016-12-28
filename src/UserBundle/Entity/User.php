@@ -1,12 +1,8 @@
 <?php
-
 namespace UserBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
-
-
 /**
  * User
  *
@@ -15,34 +11,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User extends BaseUser
 {
-
-    /**
-     * @ORM\OneToMany(targetEntity="GamerBundle\Entity\Image", mappedBy="users")
-     */
-    private $images;
-
-    /**
-     * @return mixed
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-    /**
-     * @param mixed $images
-     */
-    public function setImages($images)
-    {
-        $this->images = $images;
-    }
-
-
     /**
      * @ORM\ManyToOne(targetEntity="GamerBundle\Entity\Partie", inversedBy="users")
      */
     private $partie;
-
     /**
      * @var int
      *
@@ -51,13 +23,11 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
     public function __construct()
     {
         parent::__construct();
         // your own logic
     }
-
     /**
      * @return boolean
      */
@@ -65,7 +35,6 @@ class User extends BaseUser
     {
         return $this->meneur;
     }
-
     /**
      * @param boolean $meneur
      */
@@ -79,21 +48,18 @@ class User extends BaseUser
      * @ORM\Column(name="meneur", type="boolean")
      */
     private $meneur;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
-
     /**
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
-
 //    /**
 //     * @var string
 //     *
@@ -107,39 +73,33 @@ class User extends BaseUser
 //     * @ORM\Column(name="mail", type="string", length=255, unique=true)
 //     */
 //    private $mail;
-
     /**
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255)
      */
     private $photo;
-
     /**
      * @var int
      *
      * @ORM\Column(name="xp", type="integer")
      */
     private $xp;
-
     /**
      * @var string
      *
      * @ORM\Column(name="bio", type="text", nullable=true)
      */
     private $bio;
-
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
-
     /**
      * Set nom
      *
@@ -149,20 +109,17 @@ class User extends BaseUser
     public function setNom($nom)
     {
         $this->nom = $nom;
-
         return $this;
     }
-
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
         return $this->nom;
     }
-
     /**
      * Set prenom
      *
@@ -172,20 +129,17 @@ class User extends BaseUser
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-
         return $this;
     }
-
     /**
      * Get prenom
      *
-     * @return string 
+     * @return string
      */
     public function getPrenom()
     {
         return $this->prenom;
     }
-
     /**
      * Set pseudo
      *
@@ -195,20 +149,17 @@ class User extends BaseUser
     public function setPseudo($pseudo)
     {
         $this->pseudo = $pseudo;
-
         return $this;
     }
-
     /**
      * Get pseudo
      *
-     * @return string 
+     * @return string
      */
     public function getPseudo()
     {
         return $this->pseudo;
     }
-
     /**
      * Set mail
      *
@@ -218,20 +169,17 @@ class User extends BaseUser
     public function setMail($mail)
     {
         $this->mail = $mail;
-
         return $this;
     }
-
     /**
      * Get mail
      *
-     * @return string 
+     * @return string
      */
     public function getMail()
     {
         return $this->mail;
     }
-
     /**
      * Set photo
      *
@@ -241,20 +189,17 @@ class User extends BaseUser
     public function setPhoto($photo)
     {
         $this->photo = $photo;
-
         return $this;
     }
-
     /**
      * Get photo
      *
-     * @return string 
+     * @return string
      */
     public function getPhoto()
     {
         return $this->photo;
     }
-
     /**
      * Set xp
      *
@@ -264,20 +209,17 @@ class User extends BaseUser
     public function setXp($xp)
     {
         $this->xp = $xp;
-
         return $this;
     }
-
     /**
      * Get xp
      *
-     * @return integer 
+     * @return integer
      */
     public function getXp()
     {
         return $this->xp;
     }
-
     /**
      * Set bio
      *
@@ -287,20 +229,17 @@ class User extends BaseUser
     public function setBio($bio)
     {
         $this->bio = $bio;
-
         return $this;
     }
-
     /**
      * Get bio
      *
-     * @return string 
+     * @return string
      */
     public function getBio()
     {
         return $this->bio;
     }
-
     /**
      * Set partie
      *
@@ -310,14 +249,12 @@ class User extends BaseUser
     public function setPartie(\GamerBundle\Entity\partie $partie = null)
     {
         $this->partie = $partie;
-
         return $this;
     }
-
     /**
      * Get partie
      *
-     * @return \GamerBundle\Entity\partie 
+     * @return \GamerBundle\Entity\partie
      */
     public function getPartie()
     {

@@ -1,14 +1,11 @@
 <?php
-
 namespace GamerBundle\Controller;
-
 use GamerBundle\Entity\Partie;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use GamerBundle\Entity\Image;
-
 /**
  * Partie controller.
  *
@@ -25,14 +22,11 @@ class PartieController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $parties = $em->getRepository('GamerBundle:Partie')->findAll();
-
         return $this->render('@Gamer/partie/index.html.twig', array(
             'parties' => $parties,
         ));
     }
-
     /**
      * Creates a new partie entity.
      *
@@ -41,49 +35,31 @@ class PartieController extends Controller
      */
     public function newAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
         $image = new Image;
         $partie = new Partie();
         $partie ->addImage($image);
         $form = $this->createForm('GamerBundle\Form\PartieType', $partie);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-
             foreach ($partie->getImages() as $image){
-
                 $fileName = md5(uniqid()) . '.' . $image->getPhoto()->guessExtension();
                 $image->getPhoto()->move(
                     $this->getParameter('photo_partie_directory'),
                     $fileName
                 );
-
-                $usr = $this->get('security.context')->getToken()->getUser();
-                $usr->setMeneur(true);
-                $em->persist($usr);
-
-
                 $image->setPhoto($fileName);
                 $partie->addImage($image);
-
             }
-
+            $em = $this->getDoctrine()->getManager();
             $em->persist($partie);
-            $em->flush();
-
-
-
+            $em->flush($partie);
             return $this->redirectToRoute('partie_show', array('id' => $partie->getId()));
-
         }
-
         return $this->render('@Gamer/partie/new.html.twig', array(
             'partie' => $partie,
             'form' => $form->createView(),
         ));
     }
-
     /**
      * @Route("/dashboard/{id}")
      */
@@ -92,38 +68,13 @@ class PartieController extends Controller
 //        path('NOMDUPATH', {'id'=> partie.id})
 //        $partie = new Partie();
 //        $image = new Image();
-
         $em = $this->getDoctrine()->getManager();
-
         $images = $em->getRepository('GamerBundle:Image')->findBy(array('partie' => $partie));
-
         return $this->render('@Gamer/partie/dashBoardMeneur.html.twig', array(
             'partie' => $partie,
             'images' => $images,
         ));
-
     }
-
-    /**
-     *
-     * @Route("/winner", name="winner")
-     *
-     */
-    public function WinnerAction()
-    {
-        return $this->render('@Gamer/partie/winner.html.twig', array());
-    }
-
-    /**
-     *
-     * @Route("/looser", name="looser")
-     *
-     */
-    public function LooserAction()
-    {
-        return $this->render('@Gamer/partie/looser.html.twig', array());
-    }
-
     /**
      * @Route("/dashboardjoueur/{id}",name="gamer_partie_dashboardjoueur")
      * @param Request $request
@@ -135,7 +86,6 @@ class PartieController extends Controller
         $image = new Image();
         $form = $this->createForm('GamerBundle\Form\ImageType', $image);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $image->getPhoto();
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
@@ -143,27 +93,20 @@ class PartieController extends Controller
                 $this->getParameter('photo_partie_directory'),
                 $fileName
             );
-
             $image->setPhoto($fileName);
             $partie->addImage($image);
-
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($image);
             $em->flush($image);
-
             return $this->redirectToRoute('partie_index', array(
                 'id' => $image->getId()
-
             ));
         }
-
         return $this->render('@Gamer/partie/dashBoardJoueur.html.twig', array(
             'partie' => $partie,
             'form'=> $form->createView(),
         ));
     }
-
     /**
      * Finds and displays a partie entity.
      *
@@ -173,13 +116,11 @@ class PartieController extends Controller
     public function showAction(Partie $partie)
     {
         $deleteForm = $this->createDeleteForm($partie);
-
         return $this->render('@Gamer/partie/show.html.twig', array(
             'partie' => $partie,
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Displays a form to edit an existing partie entity.
      *
@@ -191,20 +132,16 @@ class PartieController extends Controller
         $deleteForm = $this->createDeleteForm($partie);
         $editForm = $this->createForm('GamerBundle\Form\PartieType', $partie);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('partie_edit', array('id' => $partie->getId()));
         }
-
         return $this->render('@Gamer/partie/edit.html.twig', array(
             'partie' => $partie,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Deletes a partie entity.
      *
@@ -215,16 +152,13 @@ class PartieController extends Controller
     {
         $form = $this->createDeleteForm($partie);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($partie);
             $em->flush($partie);
         }
-
         return $this->redirectToRoute('partie_index');
     }
-
     /**
      * Creates a form to delete a partie entity.
      *
@@ -240,5 +174,4 @@ class PartieController extends Controller
             ->getForm()
             ;
     }
-
 }

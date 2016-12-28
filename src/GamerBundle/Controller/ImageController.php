@@ -1,13 +1,10 @@
 <?php
-
 namespace GamerBundle\Controller;
-
 use GamerBundle\Entity\Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Image controller.
  *
@@ -24,14 +21,11 @@ class ImageController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $images = $em->getRepository('GamerBundle:Image')->findAll();
-
         return $this->render('image/index.html.twig', array(
             'images' => $images,
         ));
     }
-
     /**
      * Creates a new image entity.
      *
@@ -43,21 +37,17 @@ class ImageController extends Controller
         $image = new Image();
         $form = $this->createForm('GamerBundle\Form\ImageType', $image);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($image);
             $em->flush($image);
-
             return $this->redirectToRoute('image_show', array('id' => $image->getId()));
         }
-
         return $this->render('image/new.html.twig', array(
             'image' => $image,
             'form' => $form->createView(),
         ));
     }
-
     /**
      * Finds and displays a image entity.
      *
@@ -67,13 +57,11 @@ class ImageController extends Controller
     public function showAction(Image $image)
     {
         $deleteForm = $this->createDeleteForm($image);
-
         return $this->render('image/show.html.twig', array(
             'image' => $image,
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Displays a form to edit an existing image entity.
      *
@@ -85,20 +73,16 @@ class ImageController extends Controller
         $deleteForm = $this->createDeleteForm($image);
         $editForm = $this->createForm('GamerBundle\Form\ImageType', $image);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('image_edit', array('id' => $image->getId()));
         }
-
         return $this->render('image/edit.html.twig', array(
             'image' => $image,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Deletes a image entity.
      *
@@ -109,16 +93,13 @@ class ImageController extends Controller
     {
         $form = $this->createDeleteForm($image);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($image);
             $em->flush($image);
         }
-
         return $this->redirectToRoute('image_index');
     }
-
     /**
      * Creates a form to delete a image entity.
      *
@@ -132,6 +113,6 @@ class ImageController extends Controller
             ->setAction($this->generateUrl('image_delete', array('id' => $image->getId())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
     }
 }
